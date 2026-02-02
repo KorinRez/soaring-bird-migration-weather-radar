@@ -1,4 +1,8 @@
 # ---------------------------------- Prediction of soaring flocks ------------------------------------
+"""
+Code adapted from: Inbal Schekler's UNET-flocks-detection repository
+Original source: https://github.com/Inbal-Schekler/UNET-flocks-detection/tree/main
+"""
 
 # ----------------------------------------------------------------------------------------------------
 #
