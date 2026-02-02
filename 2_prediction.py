@@ -14,7 +14,7 @@ from datetime import datetime
 # from Flight_properties_functions import *
 
 # PREDICT NEW DATA VRDA
-# This is the path to NET-flocks-detection
+# TODO: modify as needed - this is the path to UNET-flocks-detection functions by Schekler et al. (2023) Methods in Ecology and Evolution
 sys.path.append(
     r'MY:\PATH\TO\UNET-flocks-detection_functions')
 
