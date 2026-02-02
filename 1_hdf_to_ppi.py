@@ -101,7 +101,13 @@ def main():
 #          Code adapted from: Ilya Savenko's radar-bird-segmentation repository
 #          Original source: https://github.com/ilyasa332/radar-bird-segmentation  
 # ----------------------------------------------------------------------------------------------------
+"""
+Copyright (c) 2025 Ilya Savenko
+Licensed under the MIT License
 
+Original Repository: https://github.com/ilyasa332/radar-bird-segmentation
+See LICENSE file in this directory for full license text.
+"""
             # Create images for all batches of HDFs
             for i, batch in enumerate(grouped_files):
                 # Folder for each batch
