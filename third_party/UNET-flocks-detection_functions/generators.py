@@ -6,7 +6,6 @@ from create_previous_images import create_early_image_2
 
 def image_generator(files, num_past, minuts, batch_size=32, sz=(256, 256)):
     while True:
-        #print('hello')
         # extract a random batch
         batch = np.random.choice(files, size=batch_size)
 
@@ -21,7 +20,6 @@ def image_generator(files, num_past, minuts, batch_size=32, sz=(256, 256)):
             raw = raw.resize(sz)
             raw = np.array(raw)
 
-            #print('hello2')
             prev_image = create_early_image_2(files, f, num_past, minuts, sz)
             if len(prev_image) == 0:
 
@@ -33,8 +31,6 @@ def image_generator(files, num_past, minuts, batch_size=32, sz=(256, 256)):
                 img_time_dict = {'date': str(os.path.basename(f).split('-')[2]),
                                  'time': str(os.path.basename(f).split('-')[3].split('_')[0]),
                                  'img': raw/255}
-                #print('kkk',img_time_dict)
-                #print('raw_prev', raw)
 
             img_time.append(img_time_dict)
             batch_x.append(raw_prev)
@@ -43,6 +39,7 @@ def image_generator(files, num_past, minuts, batch_size=32, sz=(256, 256)):
         batch_x = np.array(batch_x) / 255.
 
         yield (batch_x, img_time)
+
 
 
 
