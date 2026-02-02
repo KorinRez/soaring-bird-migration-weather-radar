@@ -24,6 +24,11 @@ All code is used unmodified from the original repository.
 
 ---
 
+## citation
+Schekler I, Nave T, Shimshoni I, Sapir N. 2023 Automatic detection of migrating soaring bird flocks using weather radars by deep learning. Methods Ecol. Evol. 14, 2084–2094. (doi:
+10.1111/2041-210x.14161)
+---
+
 ## Acknowledgment
 
 We thank Inbal Schekler for making her UNET Flocks Detection Model publicly available under the MIT License, which greatly facilitated the development of my migration monitoring pipeline.
