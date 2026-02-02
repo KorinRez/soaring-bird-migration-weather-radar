@@ -60,16 +60,6 @@ def main():
             # TODO: Modify as needed - Get the HDF folder path.  
             hdf_folder = fr'My:/PATH_TO_RADAR_FILES/H5/{year}/{month}/'  # files names should be in the following format:0000ISR-PPIVol-20240909-000003-0a0a.hdf
 
-            # Filter files (daytime & size)
-            hdf_paths = []
-            for root, _, files in os.walk(hdf_folder):
-                for file in files:
-                    if file.endswith('.hdf'):
-                        file_path = os.path.join(root, file)
-                        file_size = os.path.getsize(file_path)
-                        if file_size > min_file_size and is_daytime_file(file, location):
-                            hdf_paths.append(file_path)
-
             # TODO: Modify as needed - Set saving settings for where the PPI images will be saved
             save_dir = fr'MY:\PATH\TO_PPI_IMAGES\HDF_to_PPI\ppi_vrad\{SITE}\{year}\{month}'
             save_phase = ''  # Can be left empty
@@ -79,6 +69,16 @@ def main():
 #                                          HOUSEKEEPING
 #          
 # ----------------------------------------------------------------------------------------------------
+         # Filter files (daytime & size)
+            hdf_paths = []
+            for root, _, files in os.walk(hdf_folder):
+                for file in files:
+                    if file.endswith('.hdf'):
+                        file_path = os.path.join(root, file)
+                        file_size = os.path.getsize(file_path)
+                        if file_size > min_file_size and is_daytime_file(file, location):
+                            hdf_paths.append(file_path)
+                         
             # Sort files
             sorted_files = sorted(hdf_paths, key=lambda file: getFileTime(file))  
 
