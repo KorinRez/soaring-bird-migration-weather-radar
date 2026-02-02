@@ -1,3 +1,11 @@
+"""
+Copyright (c) 2025 Inbal Schekler
+Licensed under the MIT License
+
+Original Repository: https://github.com/Inbal-Schekler/UNET-flocks-detection
+See LICENSE file in this directory for full license text.
+"""
+
 import keras
 from keras.models import Model
 from keras.layers import Conv2D, MaxPooling2D, Input, Conv2DTranspose, Concatenate, BatchNormalization, UpSampling2D
@@ -51,5 +59,6 @@ def unet(sz=(256, 256, 9)):
     model.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['accuracy'])
 
     return model
+
 
 
