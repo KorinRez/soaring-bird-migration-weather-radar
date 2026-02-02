@@ -1,3 +1,12 @@
+"""
+Copyright (c) 2025 Inbal Schekler
+Licensed under the MIT License
+
+Original Repository: https://github.com/Inbal-Schekler/UNET-flocks-detection
+See LICENSE file in this directory for full license text.
+"""
+
+
 from datetime import datetime
 import re
 import os
@@ -43,5 +52,6 @@ def create_early_image_2(files, file, num_past, minuts,sz):
     else:
 
         image_prev_all = []
+
 
     return image_prev_all
