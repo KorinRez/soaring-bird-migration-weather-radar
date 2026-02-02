@@ -10,12 +10,27 @@ For details, see our publication:
 
 ## Workflow Overview
 
-This pipeline processes weather radar data to detect and quantify soaring bird migration through four main steps:
+This pipeline processes weather radar data to detect, quantify and characterize soaring bird migration through four main steps:
 
-### 1. Radar fi Preprocessing (`1_hdf_to_ppi.py`)
+### 1. (`1_hdf_to_ppi.py`)
+
+**Purpose**: Create PPI (Plan Position Indicator) images from raw HDF5 radar files  
+
+**What it does**:
+- Filters radar files for daytime periods and valid file sizes
+- Extracts radar scans at specified elevation angles 
+- Create PPI images suitable for CNN processing from HDF5 format files
+- Organizes output by date and elevation angle
+
+**Input**: Raw HDF5 radar files
+**Output**: PPI images organized in directories by date and elevation
+
+**Usage**:
+```bash
+python 1_hdf_to_ppi.py
+```
 
 
-1. 1_hdf_to_ppi
 2. 2_prediction:
 Download our best epoch from: (https://campushaifaac-my.sharepoint.com/:u:/g/personal/krezni01_campus_haifa_ac_il/IQBppZnhDiVVRKuDsU_pgMxOAQLqM4hXFks6qBV7GQc7kFY?e=hQLhJu)
 
