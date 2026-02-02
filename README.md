@@ -40,8 +40,7 @@ This script uses functions and code from [Ilya Savenko's radar-bird-segmentation
   
 **Input**: VRAD PPI images (256×256 pixels) from Step 1  
 
-**Output**: 
-- Probability array (256×256 pixels, values 0-1 per pixel indicating flock detection confidence) with timestamps
+**Output**: Probability array (256×256 pixels, values 0-1 per pixel indicating flock detection confidence) with timestamps
 
 **Code Attribution**: 
 This script uses the flock detection model from [Inbal Schekler's UNET-flocks-detection](https://github.com/Inbal-Schekler/UNET-flocks-detection). Based on Schekler et al. (2023) *Methods in Ecology and Evolution*, 14, 2084-2094. See See [`third_party/UNET-flocks-detections-functions/README.md`](third_party/UNET-flocks-detections-functions/README.md) for details..
