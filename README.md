@@ -25,7 +25,7 @@ For details, see our publication:
 **Output**: PPI images organized in directories by date and elevation
 
 **Code Attribution**: 
-This script uses radar preprocessing utilities from [Ilya Savenko's radar-bird-segmentation](https://github.com/ilyasa332/radar-bird-segmentation) (MIT License). See [`third_party/mini_utils/README.md`](third_party/mini_utils/README.md) for details.
+This script uses functions and code from [Ilya Savenko's radar-bird-segmentation](https://github.com/ilyasa332/radar-bird-segmentation) (MIT License). See [`third_party/mini_utils/README.md`](third_party/mini_utils/README.md) for details.
 
 ---
 
@@ -40,6 +40,7 @@ This script uses radar preprocessing utilities from [Ilya Savenko's radar-bird-s
    - [Download best_epoch model](https://campushaifaac-my.sharepoint.com/:u:/g/personal/krezni01_campus_haifa_ac_il/IQBppZnhDiVVRKuDsU_pgMxOAQLqM4hXFks6qBV7GQc7kFY?e=hQLhJu)
   
 **Input**: VRAD PPI images from Step 1  
+
 **Output**: Detection arrays with dates
 
 **Code Attribution**: 
