@@ -31,16 +31,16 @@ This script uses functions and code from [Ilya Savenko's radar-bird-segmentation
 
 ### 2. Flocks Detection (`2_prediction.py`)
 
-**Purpose**: Detect migrating soaring bird flocks in VRAD PPI images using deep learning U-Net model developed by Schekler et al. (2023)
+**Purpose**: Detect migrating soaring bird flocks in Radial velocity (VRAD) PPI images 
 
-**What it does**: Applies trained CNN U-Net model, developed by Schekler et al. (2023), to identify bird flocks segments
+**What it does**: Applies trained CNN U-Net model, developed by Schekler et al. (2023), to distinguish patterns of migrating soaring bird flocks from other targets detected by the radars, such as wide-­front passerine migration, ground clutter, and rain clouds.
 
 **Prerequisites**:
 1. **Download the trained model weights**: [Download best_epoch model](https://campushaifaac-my.sharepoint.com/:u:/g/personal/krezni01_campus_haifa_ac_il/IQBppZnhDiVVRKuDsU_pgMxOAQLqM4hXFks6qBV7GQc7kFY?e=hQLhJu)
   
 **Input**: VRAD PPI images (256×256 pixels) from Step 1  
 
-**Output**: Probability array (256×256 pixels, values 0-1 per pixel indicating flock detection confidence) with timestamps
+**Output**: Flock probability arrays (256×256, values 0-1 per pixel) with timestamps
 
 **Code Attribution**: 
 This script uses the flock detection model from [Inbal Schekler's UNET-flocks-detection](https://github.com/Inbal-Schekler/UNET-flocks-detection). Based on Schekler et al. (2023) *Methods in Ecology and Evolution*, 14, 2084-2094. See See [`third_party/UNET-flocks-detections-functions/README.md`](third_party/UNET-flocks-detections-functions/README.md) for details..
