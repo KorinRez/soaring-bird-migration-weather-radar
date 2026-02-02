@@ -1,5 +1,19 @@
 # soaring-bird-migration-weather-radar
 
+This repository contains the workflow for quantifying and characterizing diurnal soaring bird migration, developed by Reznikov et al. at the University of Haifa, Israel.
+
+For details, see our publication:
+
+[Citation will be added upon publication]
+
+---
+
+## Scripts included in the workflow
+1. 1_hdf_to_ppi
+2. 2_prediction:
+Download our best epoch from: (https://campushaifaac-my.sharepoint.com/:u:/g/personal/krezni01_campus_haifa_ac_il/IQBppZnhDiVVRKuDsU_pgMxOAQLqM4hXFks6qBV7GQc7kFY?e=hQLhJu)
+
+
 ## Acknowledgments
 
 This code uses components from the following repositories:
