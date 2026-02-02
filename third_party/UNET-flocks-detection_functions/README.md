@@ -18,7 +18,7 @@ This directory contains code from external sources used in my radar data process
 
 Utility functions for prediction preprocessing:
 - `unet()`: UNET model for predicting soaring flocks
-- `image_generator()`, `()`: images handling utilities for the UNET model
+- `image_generator()`, `(create_early_image_2)`: images handling utilities for the UNET model
 
 All code is used unmodified from the original repository.
 
