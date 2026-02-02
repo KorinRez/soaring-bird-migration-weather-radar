@@ -15,7 +15,7 @@ from datetime import datetime, time
 
 from Flight_properties_functions import is_daytime_file
 
-# TODO: This is the path to mini_utils - change accordingly
+# TODO: modify as needed - this is the path to mini_utils by Ilya Savenko's radar-bird-segmentation repository (Original source: https://github.com/ilyasa332/radar-bird-segmentation)
 sys.path.append(r'my\path\to\mini_utils')
 from mini_utils import *
 
