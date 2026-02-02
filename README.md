@@ -36,12 +36,12 @@ This script uses functions and code from [Ilya Savenko's radar-bird-segmentation
 **What it does**: Applies trained CNN U-Net model, developed by Schekler et al. (2023), to identify bird flocks segments
 
 **Prerequisites**:
-1. **Download the trained model weights**:
-   - [Download best_epoch model](https://campushaifaac-my.sharepoint.com/:u:/g/personal/krezni01_campus_haifa_ac_il/IQBppZnhDiVVRKuDsU_pgMxOAQLqM4hXFks6qBV7GQc7kFY?e=hQLhJu)
+1. **Download the trained model weights**: [Download best_epoch model](https://campushaifaac-my.sharepoint.com/:u:/g/personal/krezni01_campus_haifa_ac_il/IQBppZnhDiVVRKuDsU_pgMxOAQLqM4hXFks6qBV7GQc7kFY?e=hQLhJu)
   
-**Input**: VRAD PPI images from Step 1  
+**Input**: VRAD PPI images (256×256 pixels) from Step 1  
 
-**Output**: Detection arrays with dates
+**Output**: 
+- Probability array (256×256 pixels, values 0-1 per pixel indicating flock detection confidence) with timestamps
 
 **Code Attribution**: 
 This script uses the flock detection model from [Inbal Schekler's UNET-flocks-detection](https://github.com/Inbal-Schekler/UNET-flocks-detection). Based on Schekler et al. (2023) *Methods in Ecology and Evolution*, 14, 2084-2094. See See [`third_party/UNET-flocks-detections-functions/README.md`](third_party/UNET-flocks-detections-functions/README.md) for details..
