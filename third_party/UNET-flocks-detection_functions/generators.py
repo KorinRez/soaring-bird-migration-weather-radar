@@ -1,3 +1,11 @@
+"""
+Copyright (c) 2025 Inbal Schekler
+Licensed under the MIT License
+
+Original Repository: https://github.com/Inbal-Schekler/UNET-flocks-detection
+See LICENSE file in this directory for full license text.
+"""
+
 import numpy as np
 from PIL import Image
 import os
@@ -39,6 +47,7 @@ def image_generator(files, num_past, minuts, batch_size=32, sz=(256, 256)):
         batch_x = np.array(batch_x) / 255.
 
         yield (batch_x, img_time)
+
 
 
 
