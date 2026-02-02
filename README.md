@@ -8,7 +8,13 @@ For details, see our publication:
 
 ---
 
-## Scripts included in the workflow
+## Workflow Overview
+
+This pipeline processes weather radar data to detect and quantify soaring bird migration through four main steps:
+
+### 1. Radar fi Preprocessing (`1_hdf_to_ppi.py`)
+
+
 1. 1_hdf_to_ppi
 2. 2_prediction:
 Download our best epoch from: (https://campushaifaac-my.sharepoint.com/:u:/g/personal/krezni01_campus_haifa_ac_il/IQBppZnhDiVVRKuDsU_pgMxOAQLqM4hXFks6qBV7GQc7kFY?e=hQLhJu)
