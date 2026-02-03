@@ -1,6 +1,6 @@
 # Third-Party Code Attribution
 
-This directory contains code from external sources used in my radar data processing pipeline.
+This directory contains code from external sources used in our radar data processing pipeline.
 
 ---
 
