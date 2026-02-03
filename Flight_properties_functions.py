@@ -41,8 +41,8 @@ def is_daytime_file(file_name, radar_location):
         return sunrise <= file_time <= sunset
     return False
 
-#-------  use in 3_extracting_ppi_metadata.py ------
 
+#-------  use in 3_extracting_ppi_metadata.py ------
 
 def sort_by_date_time(data_list):
     """
@@ -208,3 +208,27 @@ def process_PPI_files_in_chunks(file_paths, scan_num, proj4_string, grid_size=25
         gc.collect()
 
     return all_results
+
+
+def Cartesian_distance_to_Euclidean(dictionary):
+    """
+    meters units
+    cut y_coords to match the size of x_coords and calculate the Euclidean distance array.
+    :param dictionary: contain 'x_coords' and 'y_coords' that were calculated in def process_PPI_files_in_chunks
+    :return: the dict with a new key called 'euclidean_distance'
+    """
+    x_coords = dictionary['x_coords']
+    y_coords_original = dictionary['y_coords']
+
+    # Adjust y_coords to ensure it matches x_coords (I cut the last row of the dbz as well so it's fine - this is an extra not needed row)
+    y_coords = y_coords_original[:400]
+
+    # Create 2D grids for x and y
+    x_grid, y_grid = np.meshgrid(x_coords, y_coords)
+
+    # Calculate the Euclidean distance from the radar
+    distance_array = np.sqrt(x_grid ** 2 + y_grid ** 2)
+
+    # Add the new key to the dictionary
+    dictionary['euclidean_distance'] = distance_array
+    return dictionary
