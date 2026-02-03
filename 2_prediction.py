@@ -54,6 +54,7 @@ def main():
         # model.summary()
 
         ## Loading the weights of the best epoch
+        # TODO: Modify path as needed
         model.load_weights(
             r"my_best_model_2_prev_inc_noth.epoch17-loss0.01.hdf5")
 
@@ -156,6 +157,7 @@ def main():
 
 
                 ## Save the prediction to a folder
+                # TODO: Modify path as needed
                 file_name = f"{SITE}_{year_month}_predict.pkl"
                 dir_pred = fr'MY:\PATH\TO\prediction\elev_{elev_predict}'
 
@@ -170,6 +172,7 @@ def main():
                 # Save the img
                 # -------------------------------
                 ## Save the img to a folder as an array of pixel
+                # TODO: Modify path as needed
                 file_name = f"{SITE}_{year_month}_img_pxl.pkl"
                 dir_pred = fr'MY:\PATH\TO\img_pxl\elev_{elev_predict}'
 
