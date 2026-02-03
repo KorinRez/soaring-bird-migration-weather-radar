@@ -27,7 +27,7 @@ from unet_model import unet
 
 # ----------------------------------------------------------------------------------------------------
 #
-#                                        DEFINE PARAMETERS!
+#                                        DEFINE PARAMETERS
 #
 ## ----------------------------------------------------------------------------------------------------
 # TODO: Adjust the parameters below according to your needs
