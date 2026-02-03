@@ -232,3 +232,35 @@ def Cartesian_distance_to_Euclidean(dictionary):
     # Add the new key to the dictionary
     dictionary['euclidean_distance'] = distance_array
     return dictionary
+
+
+def merge_dictionaries(first_list, second_list):
+    """
+    Merge three lists of dictionaries based on 'date' and 'time' keys.
+
+    Parameters:
+    - first_list: List of dictionaries with 'date', 'time', and 'dBZ' data.
+    - second_list: List of dictionaries with 'date', 'time', and prediction data.
+
+    Returns:
+    - merged_list: List of merged dictionaries.
+    """
+    # Create a dictionary with date and time as the name for each list for faster lookup
+    dbz_dict = {(d['date'], d['time']): d for d in first_list}
+    bird_pred_dict = {(d['date'], d['time']): d for d in second_list}
+
+    merged_list = []
+
+    # Iterate over dbz_list and merge with corresponding dictionaries
+    for (date, time), dbz_entry in dbz_dict.items():
+        merged_entry = dbz_entry.copy()  # Start with dbz dictionary
+
+        # Add bird_prediction data if available
+        if (date, time) in bird_pred_dict:
+            merged_entry.update(bird_pred_dict[(date, time)])
+
+        merged_list.append(merged_entry)
+
+    return merged_list    
+
+    
