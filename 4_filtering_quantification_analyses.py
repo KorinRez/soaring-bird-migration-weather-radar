@@ -101,7 +101,7 @@ for m, m_str in zip(months, months_str):
         # Uploading the PPI DATA
         print(f'Uploading the PPI DATA of {SITE} {year_month}')
         file_name = f"PPI_metadata_{SITE}_{year_month}.joblib"
-        output_dir = fr'L:\nir_lab_11\Korin_PhD\analyzed_radar_data_beit_dagan\PPI_metadata/elev_{elev_predict}/'
+        output_dir = fr'MY\PATH\TO\PPI_metadata/elev_{elev_predict}/'
         output_path = os.path.join(output_dir, file_name)
 
         if not os.path.exists(output_path):
@@ -353,7 +353,7 @@ for m, m_str in zip(months, months_str):
         # ---------------------------
         # upload birds_h5_files - a list of files with only birds prediction:
         file_name = f"{SITE}_{year_month}.json"
-        output_dir = fr'L:\nir_lab_11\Korin_PhD\analyzed_radar_data_beit_dagan\bird_h5_files_json/elev_{elev_predict}/'
+        output_dir = fr'MY\PATH\TO\bird_h5_files_json/elev_{elev_predict}/'
         output_path = os.path.join(output_dir, file_name)
 
         # Load the JSON data
@@ -456,7 +456,7 @@ for m, m_str in zip(months, months_str):
             birds_data_light.append(scan_copy)
 
         file_name = f"birds_data_{SITE}_{year_month}.joblib"
-        output_dir = fr'L:\nir_lab_11\Korin_PhD\analyzed_radar_data_beit_dagan\bird_data_filtered_prediction_Checkpoint_3_pkl/elev_{elev_predict}/'
+        output_dir = fr'MY\PATH\TO\bird_data_filtered_prediction_Checkpoint_3_pkl/elev_{elev_predict}/'
 
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
@@ -477,7 +477,7 @@ for m, m_str in zip(months, months_str):
         start = time.time()
 
         file_name = f"birds_data_{SITE}_{year_month}.joblib"
-        output_dir = fr'N:\Korin_PhD\analyzed_radar_data_beit_dagan\bird_data_filtered_prediction_Checkpoint_3_pkl/elev_{elev_predict}/'
+        output_dir = fr'MY\PATH\TO\bird_data_filtered_prediction_Checkpoint_3_pkl/elev_{elev_predict}/'
 
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
@@ -598,7 +598,7 @@ for m, m_str in zip(months, months_str):
         print(f'save Checkpoint_4 - data as pixels but clusters associated...')
 
         file_name = f"birds_data_{SITE}_{year_month}.joblib"
-        output_dir = fr'L:\nir_lab_11\Korin_PhD\analyzed_radar_data_beit_dagan\bird_data_filtered_prediction_Checkpoint_4_pkl/elev_{elev_predict}/'
+        output_dir = fr'MY\PATH\TO\bird_data_filtered_prediction_Checkpoint_4_pkl/elev_{elev_predict}/'
 
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
@@ -628,7 +628,7 @@ for m, m_str in zip(months, months_str):
     print(f"Combining and cleaning all elevations for {year_month}...")
 
     pattern = (
-        fr"L:\nir_lab_11\Korin_PhD\analyzed_radar_data_beit_dagan\bird_data_filtered_prediction_Checkpoint_4_pkl"
+        fr"MY\PATH\TO\bird_data_filtered_prediction_Checkpoint_4_pkl"
         fr"\elev_*\birds_data_{SITE}_{year_month}.joblib"
     )
     all_files = glob.glob(pattern)
@@ -719,7 +719,7 @@ for m, m_str in zip(months, months_str):
     gc.collect()
 
     file_name = f'{SITE}_{year_month}.csv'
-    directory_path = r'L:\nir_lab_11\Korin_PhD\analyzed_radar_data_beit_dagan\1st_clean_aggregated_csv'
+    directory_path = r'MY\PATH\TO\1st_clean_aggregated_csv'
     file_path = os.path.join(directory_path, file_name)
 
     if not os.path.exists(directory_path):
