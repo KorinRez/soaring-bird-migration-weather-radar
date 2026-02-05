@@ -45,5 +45,29 @@ This script uses functions and code from [Ilya Savenko's radar-bird-segmentation
 **Code Attribution**: 
 This script uses the flock detection model from [Inbal Schekler's UNET-flocks-detection](https://github.com/Inbal-Schekler/UNET-flocks-detection). Based on Schekler et al. (2023) *Methods in Ecology and Evolution*, 14, 2084-2094. See See [`third_party/UNET-flocks-detections-functions/README.md`](third_party/UNET-flocks-detections-functions/README.md) for details..
 
+---
+
+### 3. Extract Radar Parameters (`3_extracting_ppi_metadata.py`)
+
+**Purpose**: Extract radar parameters (reflectivity, coordinates), compute distance grid data and integrate with flock detection results
+
+**What it does**: 
+- Extracts dBZ (reflectivity factor) and geographic coordinates from original radar files using the functions read_pvolfile and project_as_ppi from bioRad package.
+- Removes duplicate detections
+- Resizes flock probability arrays from 256×256 to 400×400 to match radar data spatial resolution
+- Converts probability values (0-1) to binary predictions (flock/non-flock) using 0.5 threshold
+- Calculates Euclidean distance from radar to each grid cell
+- Integrates all parameters (detection, dBZ, coordinates, distance) by timestamp.
+
+**Prerequisites**:
+1. **Python rpy2 interface**: `pip install rpy2` to call R functions from Python
+   
+**Input**: VRAD PPI images (256×256 pixels) from Step 1  
+
+**Output**: Flock probability arrays (256×256, values 0-1 per pixel) with timestamps
+
+**Code Attribution**: 
+This script uses the flock detection model from [Inbal Schekler's UNET-flocks-detection](https://github.com/Inbal-Schekler/UNET-flocks-detection). Based on Schekler et al. (2023) *Methods in Ecology and Evolution*, 14, 2084-2094. See See [`third_party/UNET-flocks-detections-functions/README.md`](third_party/UNET-flocks-detections-functions/README.md) for details..
+
 
 
