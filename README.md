@@ -61,6 +61,7 @@ This script uses the flock detection model from [Inbal Schekler's UNET-flocks-de
 
 **Prerequisites**:
 1. **Python rpy2 interface**: `pip install rpy2` to call R functions from Python
+2. Python rpy2 interface: `pip install rpy2` to call R functions from Python
    
 **Input**: VRAD PPI images (256×256 pixels) from Step 1  
 
