@@ -22,7 +22,9 @@ For details, see our publication:
 
 **Input**: Raw HDF5 radar files
 
-**Output**: PPI images organized in directories by date and elevation
+**Output**: 
+- list of filterd radar files (.pkl files)
+- PPI images organized in directories by date and elevation (.Tiff files)
 
 **Code Attribution**: 
 This script uses functions and code from [Ilya Savenko's radar-bird-segmentation](https://github.com/ilyasa332/radar-bird-segmentation) (MIT License). See [`third_party/mini_utils/README.md`](third_party/mini_utils/README.md) for details.
@@ -38,9 +40,9 @@ This script uses functions and code from [Ilya Savenko's radar-bird-segmentation
 **Prerequisites**:
 1. **Download the trained model weights**: [Download best_epoch model](https://campushaifaac-my.sharepoint.com/:u:/g/personal/krezni01_campus_haifa_ac_il/IQBppZnhDiVVRKuDsU_pgMxOAQLqM4hXFks6qBV7GQc7kFY?e=hQLhJu)
   
-**Input**: VRAD PPI images (256×256 pixels) from Step 1  
+**Input**: VRAD PPI images (256×256 pixels) from Step 1 (.Tiff files)
 
-**Output**: Flock probability arrays (256×256, values 0-1 per pixel) with timestamps
+**Output**: Flock probability arrays (256×256, values 0-1 per pixel) with timestamps (.pkl files)
 
 **Code Attribution**: 
 This script uses the flock detection model from [Inbal Schekler's UNET-flocks-detection](https://github.com/Inbal-Schekler/UNET-flocks-detection). Based on Schekler et al. (2023) *Methods in Ecology and Evolution*, 14, 2084-2094. See See [`third_party/UNET-flocks-detections-functions/README.md`](third_party/UNET-flocks-detections-functions/README.md) for details..
@@ -60,15 +62,21 @@ This script uses the flock detection model from [Inbal Schekler's UNET-flocks-de
 - Integrates all parameters (detection, dBZ, coordinates, distance) by timestamp.
 
 **Prerequisites**:
-1. **Python rpy2 interface**: `pip install rpy2` to call R functions from Python
-2. Python rpy2 interface: `pip install rpy2` to call R functions from Python
-   
-**Input**: VRAD PPI images (256×256 pixels) from Step 1  
+1. **R and bioRad package**: Install R and the bioRad package
+2. **Python rpy2 interface**: `pip install rpy2` to call R functions from Python
+  
+**Input**: 
+- list of filterd radar files from Step 1 (.pkl files)
+- Flock probability arrays from Step 2 (.pkl files)
 
-**Output**: Flock probability arrays (256×256, values 0-1 per pixel) with timestamps
+**Output**: 
+Integrated datasets (.joblib files) containing:
 
-**Code Attribution**: 
-This script uses the flock detection model from [Inbal Schekler's UNET-flocks-detection](https://github.com/Inbal-Schekler/UNET-flocks-detection). Based on Schekler et al. (2023) *Methods in Ecology and Evolution*, 14, 2084-2094. See See [`third_party/UNET-flocks-detections-functions/README.md`](third_party/UNET-flocks-detections-functions/README.md) for details..
+- Binary flock predictions (400×400 grid)
+- dBZ values (400×400 grid)
+- Geographic coordinates (lat/lon ; 400×400 grid)
+- Distance from radar (400×400 grid)
+- Timestamps
 
 
 
