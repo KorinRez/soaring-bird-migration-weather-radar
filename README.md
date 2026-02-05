@@ -23,7 +23,7 @@ For details, see our publication:
 **Input**: Raw HDF5 radar files
 
 **Output**: 
-- list of filterd radar files (.pkl files)
+- List of filterd radar files (.pkl files)
 - PPI images organized in directories by date and elevation (.Tiff files)
 
 **Code Attribution**: 
@@ -69,16 +69,14 @@ This script uses the flock detection model from [Inbal Schekler's UNET-flocks-de
 - list of filterd radar files from Step 1 (.pkl files)
 - Flock probability arrays from Step 2 (.pkl files)
 
-**Output**: 
-Integrated datasets (.joblib files) containing:
-
+**Output**: Integrated datasets (.joblib files) containing:
 - Binary flock predictions (400×400 grid)
 - dBZ values (400×400 grid)
 - Geographic coordinates (lat/lon ; 400×400 grid)
 - Distance from radar (400×400 grid)
 - Timestamps
 
-**Output**: Implements `read_pvolfile` and `project_as_ppi` functions from bioRad R package (Dokter et al. 2019) via Python rpy2 interface.
+***Code Attribution**: Implements `read_pvolfile` and `project_as_ppi` functions from bioRad R package (Dokter et al. 2019) via Python rpy2 interface.
 
 
 
