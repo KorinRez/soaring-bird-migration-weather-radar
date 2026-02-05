@@ -360,9 +360,7 @@ for m, m_str in zip(months, months_str):
         with open(output_path, 'r') as f:
             birds_h5_files = json.load(f)
 
-        # Path was change from 'M:/Beit_dagan/H5/2024/08/14\\0000ISR-PPIVol-20240814-081503-0a0a.hdf' so I update it here: may not alase be neseccery
-        # birds_h5_files = [path.replace('M:/', 'K:/') for path in birds_h5_files]
-
+       
         print("Calculate height...")
         start = time.time()
 
