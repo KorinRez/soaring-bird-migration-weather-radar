@@ -78,5 +78,7 @@ Integrated datasets (.joblib files) containing:
 - Distance from radar (400×400 grid)
 - Timestamps
 
+**Output**: Implements `read_pvolfile` and `project_as_ppi` functions from bioRad R package (Dokter et al. 2019) via Python rpy2 interface.
+
 
 
