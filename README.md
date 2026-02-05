@@ -66,7 +66,7 @@ This script uses the flock detection model from [Inbal Schekler's UNET-flocks-de
 2. **Python rpy2 interface**: `pip install rpy2` to call R functions from Python
   
 **Input**: 
-- list of filterd radar files from Step 1 (.pkl files)
+- List of filterd radar files from Step 1 (.pkl files)
 - Flock probability arrays from Step 2 (.pkl files)
 
 **Output**: Integrated datasets (.joblib files) containing:
