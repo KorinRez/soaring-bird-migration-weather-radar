@@ -97,7 +97,7 @@ for m, m_str in zip(months, months_str):
         bird_prediction = [d for i, d in enumerate(bird_prediction) if i not in duplicates]
 
         
-        # Prepare a list of files with only birds prediction to extract dbz values
+        # Prepare a list of files with only birds' prediction to extract dBZ values
         # -------------------------------------------------------------------------
         birds_h5_files = fp.loadRelevantFiles(bird_prediction, sorted_files)
 
@@ -114,7 +114,7 @@ for m, m_str in zip(months, months_str):
             json.dump(birds_h5_files, f)
 
         
-        # Extracting dBZ, latitude and longitude from PPI
+        # Extracting dBZ, latitude, and longitude from PPI
         # -----------------------------------------------
         ### Note: This is a computationally intensive task and execution time may vary depending on the amount of files (4 files takes avout 22 seconds to process.
         print(f'extracting PPI metadata for {SITE}_{year_month} elev_{elev_predict}')
@@ -184,7 +184,7 @@ for m, m_str in zip(months, months_str):
         gc.collect()
 
         
-        # Changing the predictions from a range between 0 to 1 to a binary prediction of 0 or 1
+        # Changing the predictions from a range between 0 and 1 to a binary prediction of 0 or 1
         # ---------------------------------------------------------------------------------------
         print("Changing the predictions from a range between 0 to 1 to a binary prediction of 0 or 1...")
 
@@ -194,8 +194,8 @@ for m, m_str in zip(months, months_str):
             pred_0_1[pred_0_1 < 0.5] = 0
             data["pred_0_1"] = pred_0_1  
 
-        # Saving ppi data joblib
-        # ----------------------
+        # Saving ppi metadata (.joblib file)
+        # -----------------------------------
         file_name = f"PPI_metadata_{SITE}_{year_month}.joblib"
         output_dir = fr'MY:\PATH\TO\PPI_metadata/elev_{elev_predict}/'
         output_path = os.path.join(output_dir, file_name)
