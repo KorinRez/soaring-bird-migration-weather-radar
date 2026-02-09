@@ -78,5 +78,10 @@ This script uses the flock detection model from [Inbal Schekler's UNET-flocks-de
 
 ***Code Attribution**: Implements `read_pvolfile` and `project_as_ppi` functions from bioRad R package (Dokter et al. 2019) via Python rpy2 interface.
 
+---
+
+### 4. 
+conda create -n bird_radar_env -c conda-forge python=3.9 rasterio shapely pandas numpy scipy joblib matplotlib
+
 
 
