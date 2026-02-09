@@ -380,3 +380,84 @@ def run_height_range_in_chunks(h5_files, scan_dicts, radar_height, elev_predict,
         gc.collect()
 
     return results
+
+def gaussian_weighted_cluster(scan, mask, cluster_id, bin_size=200, sd_factor=3, array_2d='prediction_reflectivity_eta_0'):
+    """
+    Applies Gaussian weighting to a cluster (mask) within a scan.
+    Skips the scan if critical keys are missing.
+    """
+    required_keys = ['min_height', 'max_height', 'lat_grid', 'lon_grid', 'euclidean_distance', array_2d, 'bird_count_0_Tmatrix']  
+
+    # Check for missing keys
+    missing_keys = [k for k in required_keys if k not in scan]
+    if missing_keys:
+        print(f"Skipping scan {scan.get('date')} {scan.get('time')} due to missing keys: {missing_keys}")
+        return []  
+
+    # Proceed if all keys exist
+    min_heights = scan["min_height"] * 1000  # from km to meters
+    max_heights = scan["max_height"] * 1000  # from km to meters
+    reflectivity_arr = scan[array_2d]
+    bird_arr = scan["bird_count_0_Tmatrix"]
+
+    date_obj = datetime.strptime(scan["date"], '%Y%m%d').date()
+    time_obj = datetime.strptime(scan["time"], '%H%M%S').time()
+
+    # Determine the overall maximum height in this scan for fixed bin creation.
+    overall_max = np.nanmax(max_heights)
+    fixed_bins = np.arange(0, overall_max + bin_size, bin_size)
+
+    records = []  # will hold a list of dictioneries. Each dictionary represents one height bin for one pixel (cell) in the cluster.
+
+    # Get indices of all pixels in the cluster where the mask is True.
+    idxs = np.argwhere(mask)
+
+    # Loop over every pixel (cell) in the current cluster
+    for i, j in idxs:
+        refl = reflectivity_arr[i, j]
+        bird = bird_arr[i, j]
+        lat = scan["lat_grid"][i, j]
+        lon = scan["lon_grid"][i, j]
+        hmin = min_heights[i, j]
+        hmax = max_heights[i, j]
+        dist = scan["euclidean_distance"][i, j]
+
+        # Skip cells with no data.
+        if np.isnan(refl) or refl == 0:
+            continue
+
+        cell_height_range = f"{hmin / 1000:.2f} - {hmax / 1000:.2f}"  # km
+
+        # Compute cell-specific Gaussian parameters.
+        mu = (hmin + hmax) / 2  
+        sigma = (hmax - hmin) / sd_factor  
+
+        # Filter the fixed bins to only those within the cell's height range.
+        in_range = (fixed_bins >= hmin) & (fixed_bins <= hmax)
+        bins = fixed_bins[in_range]
+
+        # Compute Gaussian PDF (Probability Density Function) values at each fixed bin by the center of the bin.
+        weights = norm.pdf(bins, loc=mu, scale=sigma)  
+
+        # Normalize the weights to sum to 1 (avoind infinity)
+        weights /= weights.sum()  
+
+        # Record contributions only for bins that are relevant for the cell.
+        for k, bin_val in enumerate(bins):
+            records.append({
+                "date": date_obj,
+                "time": time_obj,
+                "angle": scan["angle"],
+                "cluster_id": cluster_id,
+                "height_bin": bin_val,
+                "cell_height_range": cell_height_range,
+                "reflectivity": refl * weights[k],
+                "bird_count": bird * weights[k],
+                "long": lon,
+                "lat": lat,
+                "distance_from_radar": dist
+            })
+
+    return records
+
+
