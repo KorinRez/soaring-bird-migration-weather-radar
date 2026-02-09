@@ -83,7 +83,7 @@ This script uses the flock detection model from [Inbal Schekler's UNET-flocks-de
 ### 4. 
 
 Creating enviroment:
-conda create -n bird_radar_env -c conda-forge python=3.9 rasterio shapely pandas numpy scipy joblib matplotlib h5py astral
+conda create -n bird_radar_env -c conda-forge python=3.9 rasterio shapely pandas numpy scipy joblib matplotlib h5py astral pyproj tqdm rpy2 cartopy
 
 
 
