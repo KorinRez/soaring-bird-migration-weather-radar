@@ -119,7 +119,7 @@ def prepare_projection_and_grid(proj4_string, range_max, array_size):
     x_grid = np.linspace(-range_max, range_max, array_size)
     y_grid = np.linspace(-range_max, range_max, array_size)
     X, Y = np.meshgrid(x_grid, y_grid, indexing="xy")
-    lon_grid, lat_grid = transformer.transform(X, Y)
+    lon_grid, lat_grid = transformer.transform(X, Y)  # Converting from meters in the local radar projection to degrees in WGS84
 
     # Flip lat/lon so that row 0 is north
     lat_grid = np.flipud(lat_grid)
