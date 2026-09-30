@@ -80,10 +80,38 @@ This script uses the flock detection model from [Inbal Schekler's UNET-flocks-de
 
 ---
 
-### 4. 
+### 4. Filtering, Quantification and Height Analysis (`4_filtering_quantification_analyses.py`)
 
-Creating enviroment:
-conda create -n bird_radar_env -c conda-forge python=3.9 rasterio shapely pandas numpy scipy joblib matplotlib h5py astral pyproj tqdm rpy2 cartopy
+**Purpose**: Filter out non-biological targets (clouds, residual clutter), convert detections into bird counts, and aggregate individual detections into flock-level clusters with migration height and region information.
 
+**What it does**:
+- Builds a land/sea mask for the radar grid (from a country boundary GeoJSON) to exclude detections over the sea, with a regional correction step to fix inland areas misclassified as sea
+- Applies combined per-pixel filtering: dBZ range, model prediction, distance from radar (≤50 km), and the sea mask
+- Converts filtered dBZ values to reflectivity
+- Removes residual non-biological targets (mainly clouds) using empirically tuned, per-cluster thresholds (cluster size, width, reflectivity sum and ratio), with separate thresholds for September (peak migration month) vs. other months
+- Computes the height range of each detection 
+- Converts reflectivity to bird counts using a date-matched RCS (Radar Cross-Section) T-matrix value
+- Spatially clusters detections within each scan to identify individual flocks, and computes a Gaussian-weighted height distribution per cluster
+- After all elevations for a given month are processed: combines all elevation files, removes duplicate detections across overlapping elevation angles (keeping the highest bird count per voxel), and aggregates pixels into cluster-level records (summed reflectivity/bird count, mean distance, centroid coordinates)
+- Converts height from above see level (ASL) to above ground level (AGL) using a digital elevation model raster, and keeps only clusters whose flock top is at least 200 m AGL
+- Assigns each cluster to a north/south region relative to the radar site
+- Exports a final, cluster-level CSV per site and month
 
+**Prerequisites**:
+1. **Conda environment** *(optional — this is the environment used for this analysis; not a strict requirement)*:
+ conda create -n bird_radar_env -c conda-forge python=3.9 rasterio shapely pandas numpy scipy joblib matplotlib h5py astral pyproj tqdm rpy2 cartopy
 
+2. **Reference files** (paths set at the top of the script):
+   - Country-boundary GeoJSON, for sea masking
+   - `mean_RCSs.csv` — mean RCS (T-matrix) values by date range, used to convert reflectivity to bird counts
+   - DEM raster (`.tif`), for computing height AGL
+  
+   **Notes**:
+  - The sea mask (and its regional correction) is specific to this study's geographic area and radar site; it is optional and should be adjusted, replaced, or    removed for other regions.
+  - The per-cluster cloud-filtering step (removing residual non-biological targets by empirically tuned thresholds) is optional and can be removed or adjusted if     false-positive detections from the Flock Detection Model are filtered out in another way.
+  - The RCS values used for the bird-count conversion can be calculated following the method described in Reznikov et al. (2025), *J. R. Soc. Interface*, 22(231), 20250510. https://doi.org/10.1098/rsif.2025.0510
+
+**Input**: PPI metadata (.joblib files) and radar file metadata (.json files) from Step 3, per elevation angle
+
+**Output**: 
+- Final cluster-level (each cluster represent a flock) CSV per site/month, containing: date, time, cluster location (centroid coordinates), height range (ASL and AGL), bird count, reflectivity, cluster size and width, distance from radar, and region (north/south)
