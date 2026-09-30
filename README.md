@@ -106,10 +106,10 @@ This script uses the flock detection model from [Inbal Schekler's UNET-flocks-de
    - `mean_RCSs.csv` — mean RCS (T-matrix) values by date range, used to convert reflectivity to bird counts
    - DEM raster (`.tif`), for computing height AGL
   
-   **Notes**:
-  - The sea mask (and its regional correction) is specific to this study's geographic area and radar site; it is optional and should be adjusted, replaced, or    removed for other regions.
-  - The per-cluster cloud-filtering step (removing residual non-biological targets by empirically tuned thresholds) is optional and can be removed or adjusted if     false-positive detections from the Flock Detection Model are filtered out in another way.
-  - The RCS values used for the bird-count conversion can be calculated following the method described in Reznikov et al. (2025), *J. R. Soc. Interface*, 22(231), 20250510. https://doi.org/10.1098/rsif.2025.0510
+**Notes**:
+- The sea mask (and its regional correction) is specific to this study's geographic area and radar site; it is optional and should be adjusted, replaced, or    removed for other regions.
+- The per-cluster cloud-filtering step (removing residual non-biological targets by empirically tuned thresholds) is optional and can be removed or adjusted if    false-positive detections from the Flock Detection Model are filtered out in another way.
+- The RCS values used for the bird-count conversion can be calculated following the method described in Reznikov et al. (2025), *J. R. Soc. Interface*, 22(231), 20250510. https://doi.org/10.1098/rsif.2025.0510
 
 **Input**: PPI metadata (.joblib files) and radar file metadata (.json files) from Step 3, per elevation angle
 
